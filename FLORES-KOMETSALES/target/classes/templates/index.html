@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Flores</title>
+<link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2" align="center">
+ 
+<h3>Lista de Flores</h3>
+    <table style="width:80%" border="1"
+           class = "table table-striped table-responsive-md">
+    <thead>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="flor:${floreslist}">
+        <td th:text="${flor.nombre}"></td>
+        <td th:text="${flor.precio}"></td>
+        <td>
+        	<a th:href="@{/borrarFlor/{id}(id=${flor.id})}"
+            class="btn btn-danger">Delete</a>
+    	</td>
+  </tr>
+  </tbody>
+</table>
+<a th:href="@{/flowersPrice}"><button class="btn btn-primary">Ver flores mayores a 20.00$</button></a>
+<br>
+<a th:href="@{/buscarFlor}"><button class="btn btn-primary">Buscar flor por nombre</button></a>
+</div>
+</body>
+</html>
